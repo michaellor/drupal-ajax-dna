@@ -1,0 +1,12 @@
+<?php
+class DnaTestCase extends DrupalUnitTestCase
+{
+    function testDnaFind()
+    {
+        $description = 'The input of A should return T.';
+        $input = 'A';
+        $result = dna_find($input);
+        $expected_output = 'T';
+        $this->assertEquals($result, $expected_output, $description);
+    }
+}

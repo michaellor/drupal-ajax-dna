@@ -24,3 +24,11 @@ function dna_form() {
         '#required' => TRUE,
     );
 }
+
+function dna_find($input) {
+    $output = array();
+    if($input == 'A') {
+      array_push($output, 'T');
+    }
+    return $output;
+}
