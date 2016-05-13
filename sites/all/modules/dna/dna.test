@@ -16,15 +16,12 @@ class DnaTests extends DrupalWebTestCase
     public function setUp() {
         parent::setUp(array('dna'));
 
-        $user = $this->drupalCreateAdminUser();
-        $this->drupalLogin($user);
-        $this->createTestingPage();
     }
-    // 
-    // public function testDnaNavigation() {
-    //     $this->drupalGet('dna_start');
-    //     $this->assertText('DNA Module', 'The landing page works.');
-    // }
+
+    public function testDnaNavigation() {
+        $this->drupalGet('dna_start');
+        $this->assertText('DNA Module', 'The landing page works.');
+    }
 }
 //
 // class DnaTestCase extends DrupalUnitTestCase
