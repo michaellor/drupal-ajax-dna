@@ -38,16 +38,44 @@ function element_validate_acgt_input($element) {
     $user_input = str_split($user_input);
     foreach($user_input as $input) {
         if(($input != 'A') && ($input != 'C') && ($input != 'G') && ($input != 'T')) {
-          form_set_error('dna_input', 'Invalid character(s) submitted.');
+            form_set_error('dna_input', 'Invalid character(s) submitted.');
         }
     }
 }
 
-function dna_find($input) {
+function dna_format_input($user_input) {
+    $user_input = strtoupper($user_input);
+    $user_input = str_split($user_input);
+    return $user_input;
+}
+
+function dna_find($user_input) {
     $output = array();
-    $input = array($input);
-    if($input == 'A') {
-      array_push($output, 'T');
+    foreach ($user_input as $input) {
+        if ($input == 'A') {
+            array_push($output, 'T');
+        } elseif ($input == 'T') {
+            array_push($output, 'A');
+        } elseif ($input == 'C') {
+            array_push($output, 'G');
+        } elseif ($input == 'G') {
+            array_push($output, 'C');
+        }
     }
+    $output = implode("",$output);
     return $output;
+}
+
+function dna_form_submit($form, &$form_state) {
+    $user_input = dna_format_input($form_state['values']['dna_input']);
+    $output = dna_find($user_input);
+    $_SESSION['input'] = implode("",$user_input);
+    $_SESSION['output'] = $output;
+    $form_state['redirect'] = 'dna_results';
+}
+
+function dna_success() {
+    $output = $_SESSION['output'];
+    $input = $_SESSION['input'];
+    return '<p>input: ' . $input . '</p><p>output: ' . $output . '</p>';
 }

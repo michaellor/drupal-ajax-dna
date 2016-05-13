@@ -38,6 +38,14 @@ class DnaTestCase extends DrupalUnitTestCase
         );
     }
 
+    public function testInputFormatting()
+    {
+        $description = 'An input should get upper cased and string split.';
+        $input = 'atcg';
+        $result = dna_format_input($input);
+        $expected_output = 'ATCG';
+    }
+
     public function testDnaFind()
     {
         $description = 'The input of A should return T.';
@@ -46,4 +54,5 @@ class DnaTestCase extends DrupalUnitTestCase
         $expected_output = 'T';
         $this->assertEqual($result, $expected_output, $description);
     }
+
 }
