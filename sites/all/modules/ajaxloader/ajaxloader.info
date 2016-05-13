@@ -1,0 +1,5 @@
+name = Ajax Loader
+description = Display Mob nodes using ajax
+package = My Modules
+core = 7.x
+files[] = ajaxloader.module
