@@ -1,9 +1,11 @@
 <?php
 
 function dna_menu() {
+    $items = array();
     $items['dna_start'] = array(
         'title' => 'DNA Module',
         'page callback' => 'drupal_get_form',
+        'page arguments' => array('dna_form'),
         'access callback' => TRUE,
         'type' => MENU_NORMAL_ITEM,
     );
@@ -18,11 +20,16 @@ function dna_menu() {
 
 function dna_form() {
     $form['dna_input'] = array(
-        '#title' => '',
+        '#title' => 'DNA input',
         '#type' => 'textfield',
-        '#description' => t('Enter DNA letter'),
+        '#description' => t('Enter DNA letter (A,C,G,T)'),
         '#required' => TRUE,
     );
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => 'Submit',
+    );
+    return $form;
 }
 
 function dna_find($input) {
