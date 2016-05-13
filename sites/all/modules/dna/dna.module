@@ -22,14 +22,25 @@ function dna_form() {
     $form['dna_input'] = array(
         '#title' => 'DNA input',
         '#type' => 'textfield',
-        '#description' => t('Enter DNA letter (A,C,G,T)'),
+        '#description' => t('Enter DNA letter sequence using the letters A,C,G,T. No punctuation or spaces.'),
         '#required' => TRUE,
+        '#element_validate' => array('element_validate_acgt_input'),
     );
     $form['submit'] = array(
         '#type' => 'submit',
         '#value' => 'Submit',
     );
     return $form;
+}
+
+function element_validate_acgt_input($element) {
+    $user_input = strtoupper($element['#value']);
+    $user_input = str_split($user_input);
+    foreach($user_input as $input) {
+        if(($input != 'A') && ($input != 'C') && ($input != 'G') && ($input != 'T')) {
+          form_set_error('dna_input', 'Invalid character(s) submitted.');
+        }
+    }
 }
 
 function dna_find($input) {
