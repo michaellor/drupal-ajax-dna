@@ -5,7 +5,8 @@
  */
 class DnaTests extends DrupalWebTestCase
 {
-    public static function getInfo() {
+    public static function getInfo()
+    {
         return array(
             'name' => 'DNA Tests',
             'description' => 'Test the DNA module.',
@@ -23,12 +24,21 @@ class DnaTests extends DrupalWebTestCase
         $this->assertText('Enter DNA letter (A,C,G,T)', 'The landing page works.');
     }
 
-    
+
 }
 
 class DnaTestCase extends DrupalUnitTestCase
 {
-    function testDnaFind()
+    public static function getInfo()
+    {
+        return array(
+            'name' => 'dna_find function Test',
+            'description' => 'Test the DNA Find function.',
+            'group' => 'DNA Module Tests',
+        );
+    }
+
+    public function testDnaFind()
     {
         $description = 'The input of A should return T.';
         $input = 'A';
