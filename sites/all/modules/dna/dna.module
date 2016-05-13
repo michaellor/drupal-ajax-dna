@@ -1,0 +1,26 @@
+<?php
+
+function dna_menu() {
+    $items['dna_start'] = array(
+        'title' => 'DNA Module',
+        'page callback' => 'drupal_get_form',
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    $items['dna_results'] = array(
+        'title' => 'Results',
+        'page callback' => 'dna_success',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+    return $items;
+}
+
+function dna_form() {
+    $form['dna_input'] = array(
+        '#title' => '',
+        '#type' => 'textfield',
+        '#description' => t('Enter DNA letter'),
+        '#required' => TRUE,
+    );
+}
