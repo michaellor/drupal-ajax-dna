@@ -1,12 +1,40 @@
 <?php
-class DnaTestCase extends DrupalUnitTestCase
+/**
+ * @file
+ * Functional tests for the DNA module.
+ */
+class DnaTests extends DrupalWebTestCase
 {
-    function testDnaFind()
-    {
-        $description = 'The input of A should return T.';
-        $input = 'A';
-        $result = dna_find($input);
-        $expected_output = 'T';
-        $this->assertEquals($result, $expected_output, $description);
+    public static function getInfo() {
+        return array(
+            'name' => 'DNA Tests',
+            'description' => 'Test the DNA module.',
+            'group' => 'DNA Module Tests',
+        );
     }
+
+    public function setUp() {
+        parent::setUp(array('dna'));
+
+        $user = $this->drupalCreateAdminUser();
+        $this->drupalLogin($user);
+        $this->createTestingPage();
+    }
+    // 
+    // public function testDnaNavigation() {
+    //     $this->drupalGet('dna_start');
+    //     $this->assertText('DNA Module', 'The landing page works.');
+    // }
 }
+//
+// class DnaTestCase extends DrupalUnitTestCase
+// {
+//     function testDnaFind()
+//     {
+//         $description = 'The input of A should return T.';
+//         $input = 'A';
+//         $result = dna_find($input);
+//         $expected_output = 'T';
+//         $this->assertEqual($result, $expected_output, $description);
+//     }
+// }

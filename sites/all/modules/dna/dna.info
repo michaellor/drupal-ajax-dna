@@ -3,3 +3,5 @@ description = Generate the other half and print both sides on the browser.
 package = My Modules
 core = 7.x
 files[] = dna.module
+files[] = dna.test
+dependencies[] = simpletest
