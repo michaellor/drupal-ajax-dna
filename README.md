@@ -1,9 +1,3 @@
-* database: ajax_dna
-* db admin: admin_ajax
-* db admin pw: password
-* login: admin
-* pw: password
-
 #DNA Pair
 ####Drupal Code Review for Epicodus, 05.13.2016
 
@@ -23,6 +17,12 @@ Specific project goals include:
 * Unit Testing
 
 ##Setup
+
+* database: ajax_dna
+* db admin: admin_ajax
+* db admin pw: password
+* login: admin
+* pw: password
 
 1) Clone repository to local drive.
 
