@@ -22,6 +22,8 @@ class DnaTests extends DrupalWebTestCase
     public function testDnaNavigation() {
         $this->drupalGet('dna_start');
         $this->assertText('Enter DNA letter sequence using the letters A,C,G,T. No punctuation or spaces.', 'The landing page works.');
+        $this->drupalPost('dna_results');
+        $this->assertText('output:', 'The results page works');
     }
 
 
@@ -51,6 +53,7 @@ class DnaTestCase extends DrupalUnitTestCase
         $result = dna_find($input);
         $expected_output = 'T';
         $this->assertEqual($result, $expected_output, $description);
+
     }
 
 }
